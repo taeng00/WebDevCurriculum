@@ -77,11 +77,22 @@
 ## Quest
 
 - tracert(Windows가 아닌 경우 traceroute) 명령을 통해 www.google.com 까지 가는 경로를 찾아 보세요.
+
   - 어떤 IP주소들이 있나요?
+  <p align="center">
+    <img src="https://user-images.githubusercontent.com/124439821/230173341-bb022950-d495-4ff6-a73a-dfe64488b3e3.png">
+  </p>
+
   - 그 IP주소들은 어디에 위치해 있나요?
+    > hkg07s50-in-f4.1e100.net (맞나?)
+
 - Wireshark를 통해 www.google.com 으로 요청을 날렸을 떄 어떤 TCP 패킷이 오가는지 확인해 보세요
+
   - TCP 패킷을 주고받는 과정은 어떻게 되나요?
+    > 3way- handshaking
   - 각각의 패킷에 어떤 정보들이 담겨 있나요?
+    > Source Port (발신지 포트 필드), Destination Port (목적지 포트 필드), Sequence Number (순차 번호 필드), Acknowledgement Number (확인 응답 번호 필드), Header Length (데이터 오프셋 필드) 등등..
+
 - telnet 명령을 통해 http://www.google.com/ URL에 HTTP 요청을 날려 보세요.
   - 어떤 헤더들이 있나요?
   - 그 헤더들은 어떤 역할을 하나요?
