@@ -80,24 +80,29 @@
 > 단순함에 초점을 둔 FaceBook에 의해서 만들어진 오픈소스 자바스크립트 테스트 프레임 워크. 코드가 제대로 동작하는지 확인하는 Test Case를 만듦.
 
       1. 프로젝트 생성 : 프로젝트 디렉터리를 생성하고 NPM 초기화 커맨드로 package.jso 파일을 생성.
-      ```
-      $ mkdir my-jest
-      $ npm init -y
-      $ ls
-      package.json
-      ```
+
+```
+$ mkdir my-jest
+$ npm init -y
+$ ls
+package.json
+```
+
       2. Jest 라이브러리 설치
       - Jest 라이브러를 개발 의존성으로 설치.
       - 개발 의존성으로 설치하는 것은 package.json 안에 dependencies가 아닌 devDependencies에 저장. devDependencies는 개발 시 사용하는 패키지를 설치하는 곳으로 배포시에는 포함되지 않음.
-      ```
-      $ npm i -D jest
-      ```
+
+```
+$ npm i -D jest
+```
+
       3. test Script 수정 : package.json 파일에서 test Script를 jest로 수정.
-      ```
-      "scripts": {
-        "test": "jest"
-      },
-      ```
+
+```
+"scripts": {
+  "test": "jest"
+},
+```
 
 - Jest 이외의 테스트 프레임워크는 어떤 것이 있고 어떤 장단점이 있을까요?
 
