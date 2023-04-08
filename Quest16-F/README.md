@@ -1,36 +1,79 @@
 # Quest 16-F. 컴포넌트 기반 개발
 
 ## Introduction
-* 이번 퀘스트에서는 Vue.js 프레임워크를 통해 컴포넌트 기반의 웹 클라이언트 개발 방법론을 더 자세히 알아보겠습니다.
+
+- 이번 퀘스트에서는 Vue.js 프레임워크를 통해 컴포넌트 기반의 웹 클라이언트 개발 방법론을 더 자세히 알아보겠습니다.
 
 ## Topics
-* Vue.js framework
-* vuex
-* Virtual DOM
+
+- Vue.js framework
+- vuex
+- Virtual DOM
 
 ## Resources
-* [Vue.js](https://vuejs.org)
-  * [Lifecycle Hooks](https://v3.vuejs.org/guide/composition-api-lifecycle-hooks.html)
-  * [State Management](https://v3.vuejs.org/guide/state-management.html)
-  * [Virtual DOM](https://v3.vuejs.org/guide/optimizations.html#virtual-dom)
+
+- [Vue.js](https://vuejs.org)
+  - [Lifecycle Hooks](https://v3.vuejs.org/guide/composition-api-lifecycle-hooks.html)
+  - [State Management](https://v3.vuejs.org/guide/state-management.html)
+  - [Virtual DOM](https://v3.vuejs.org/guide/optimizations.html#virtual-dom)
 
 ## Checklist
-* Vue.js는 어떤 특징을 가지고 있는 웹 프레임워크인가요?
-  * Vue.js는 내부적으로 어떤 식으로 동작하나요?
-* Vue.js에서의 컴포넌트란 무엇인가요?
-  * Vue 컴포넌트의 라이프사이클은 어떤 식으로 호출되나요?
-* 컴포넌트 간에 데이터를 주고받을 때 단방향 바인딩과 양방향 바인딩 방식이 어떻게 다르고, 어떤 장단점을 가지고 있나요?
-* Vue.js 기반의 웹 어플리케이션을 위한 상태관리 라이브러리에는 어떤 것이 있을까요? 이러한 상태관리 툴을 사용하는 것에는 어떤 장단점이 있을까요?
+
+- Vue.js는 어떤 특징을 가지고 있는 웹 프레임워크인가요?
+
+  > - Vue.js는 사용자 인터페이스를 만들기 위한 동적 JavaScript 프레임워크. HTML, CSS 및 JavaScript에 대한 기본적인 이해만으로 Vue.js에서 웹 앱 구성을 시작할 수 있는 액세스 가능하고 간단한 프레임워크. 짧은 학습 곡선은 이 점진적 프레임워크의 특징. 유연하며 웹 개발에서 유틸리티 또는 포괄적인 프레임워크로 사용 가능.
+
+- Vue.js는 내부적으로 어떤 식으로 동작하나요?
+
+      1. 데이터는 무엇인가 (Model) : 필요한 데이터를 생각하고 넣어 둘것 (웹 페이지'html' 에서 바뀌는 부분(데이터가 들어가는 속성) 에 매핑됨.)
+      2. 표시되는 요소는 무엇인가(View) : 그 데이터가 HTML의 어느 부분에 어떤 형식(표현방식)으로 표시되는가 생각할 것.
+      3. 어떤 식으로 연결 되는가(ViewModel) :HTML의  부분이 조작(변경)될 때 데이터가 어떤 형식으로 변화되고  생각할 것, (Model 과 View 의 연관 방식)
+
+- Vue.js에서의 컴포넌트란 무엇인가요?
+
+  > - Vue의 가장 강력한 기능 중 하나. 기본 HTML 엘리먼트를 확장하여 재사용 가능한 코드를 캡슐화하는 데 도움이 됨. 상위 수준에서 컴포넌트는 Vue의 컴파일러에 의해 동작이 추가된 사용자 지정 엘리먼트. 경우에 따라 특별한 `is` 속성으로 확장 된 원시 HTML 엘리먼트로 나타날 수도 있음.
+
+- Vue 컴포넌트의 라이프사이클은 어떤 식으로 호출되나요?
+
+  > - 인스턴스의 상태에 따라 호출할 수 있는 속성들을 라이프 사이클 이라고 함.
+  > - 그 속성마다 개발자가 추가한 커스텀 로직을 라이프 사이클 훅이라고 함.
+
+      - 각 컴포넌트는 생성될 때 초기화 단계를 거친다.
+        - DOM을 업데이트 할 때 초기화 단계를 거친다.
+          - 데이터를 관찰하거나 변경될 때
+          - 템플릿을 컴파일할 때
+          - 인스턴스를 DOM에 마운트할 때
+
+      이 과정에서 라이프 사이클 훅이 실행되고, 사용자는 특정 단계에서 코드 추가 가능.
+
+- 컴포넌트 간에 데이터를 주고받을 때 단방향 바인딩과 양방향 바인딩 방식이 어떻게 다르고, 어떤 장단점을 가지고 있나요?
+
+  > - 양방향 바인딩
+  > - 장점 : 코드의 사용면에서 코드량을 크게 줄여줌
+  > - 단점 : 변화에 따라 DOM 객체 전체를 렌더링해주거나 데이터를 바꿔주므로, 성능이 감소되는 경우가 있음
+
+  > - 단방향 바인딩
+  > - 장점 : 데이터 변화에 따른 성능 저하 없이 DOM 객체 갱신 가능, 데이터 흐름이 단방향(부모->하위 컴포넌트)이라, 코드를 이해하기 쉽고 데이터 추적과 디버깅이 쉬움.
+  > - 단점: 변화를 감지하고 화면을 업데이트 하는 코드를 매번 작성해야 함
+  >   대표적으로 React가 단방향 데이터 바인딩을 함.
+
+- Vue.js 기반의 웹 어플리케이션을 위한 상태관리 라이브러리에는 어떤 것이 있을까요? 이러한 상태관리 툴을 사용하는 것에는 어떤 장단점이 있을까요?
+
+      Vue Router : 싱글 페이지 애플리케이션을 구현할 때 사용하는 라이브러리
+      Vuex : Vue.js 애플리케이션을 위한 상태 관리 패턴과 라이브러리
+      Axios : 뷰에서 권고하는 Promise 기반의 HTTP 통신 라이브러리
 
 ## Quest
-* Vue.js를 통해 메모장 시스템을 다시 한 번 만들어 보세요.
-  * 어떤 컴포넌트가 필요한지 생각해 보세요.
-  * 각 컴포넌트별로 해당하는 CSS와 자바스크립트를 어떤 식으로 붙여야 할까요?
-  * Vue.js 시스템에 타입스크립트는 어떤 식으로 적용할 수 있을까요?
-  * 컴포넌트간에 데이터를 주고받으려면 어떤 식으로 하는 것이 좋을까요?
-  * `vue-cli`와 같은 Vue의 Boilterplating 기능을 이용하셔서 세팅하시면 됩니다.
+
+- Vue.js를 통해 메모장 시스템을 다시 한 번 만들어 보세요.
+  - 어떤 컴포넌트가 필요한지 생각해 보세요.
+  - 각 컴포넌트별로 해당하는 CSS와 자바스크립트를 어떤 식으로 붙여야 할까요?
+  - Vue.js 시스템에 타입스크립트는 어떤 식으로 적용할 수 있을까요?
+  - 컴포넌트간에 데이터를 주고받으려면 어떤 식으로 하는 것이 좋을까요?
+  - `vue-cli`와 같은 Vue의 Boilterplating 기능을 이용하셔서 세팅하시면 됩니다.
 
 ## Advanced
-* React와 Angular는 어떤 프레임워크이고 어떤 특징을 가지고 있을까요? Vue와는 어떤 점이 다를까요?
-* Web Component는 어떤 개념인가요? 이 개념이 Vue나 React를 대체하게 될까요?
-* Reactive Programming이란 무엇일까요?
+
+- React와 Angular는 어떤 프레임워크이고 어떤 특징을 가지고 있을까요? Vue와는 어떤 점이 다를까요?
+- Web Component는 어떤 개념인가요? 이 개념이 Vue나 React를 대체하게 될까요?
+- Reactive Programming이란 무엇일까요?
